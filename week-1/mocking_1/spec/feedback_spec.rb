@@ -1,8 +1,8 @@
 require 'feedback'
-require 'date'
 
 describe Feedback do
-  subject(:feedback) { Feedback.new(10, Date.today) }
+  let(:date_instance){double :date_instance}
+  subject(:feedback) { Feedback.new(10, date_instance) }
 
   describe '#happiness' do
     it 'returns the happiness score' do

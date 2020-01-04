@@ -1,5 +1,3 @@
-require 'date'
-
 class Feedback
   attr_reader :happiness
 

@@ -1,20 +1,22 @@
 require 'test'
-require 'answer'
 
 describe Test do
+  let(:answer){double :answer, :correct? => true}
+  let(:todays_date){double :todays_date, :to_s => '2019-01-01'}
+
   let(:answers) do
     [
-      Answer.new(5, 5),
-      Answer.new(7, 7),
-      Answer.new(1, 1)
+      answer,
+      answer,
+      answer
     ]
   end
 
-  subject(:test) { Test.new(Date.today, answers) }
+  subject(:test) { Test.new(todays_date, answers) }
 
   describe '#pretty_date_taken' do
     it 'returns the date the test was taken, as a string' do
-      expect(test.pretty_date_taken).to eq Date.today.to_s
+      expect(test.pretty_date_taken).to eq('2019-01-01')
     end
   end
 
