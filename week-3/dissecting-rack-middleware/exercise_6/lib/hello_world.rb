@@ -14,8 +14,8 @@ class HelloWorldApp
 end
 
 class Logger
-  
-  def initialize(app)
+
+  def initialize(app) #initalized with cacher
     @app = app
   end
 
@@ -28,12 +28,12 @@ end
 
 class Cacher
 
-  def initialize(app)
+  def initialize(app)  #initalized with response
     @app = app
-    @storage = storage || {}
+    @storage = []
   end
 
-  def cache(env)
+  def call(env)
     store(env)
     @app.call(env)
   end
@@ -42,6 +42,7 @@ class Cacher
 
   def store(data)
     #sends data to fast storage
+    @storage << data
     p 'storing data in cache'
   end
 end
