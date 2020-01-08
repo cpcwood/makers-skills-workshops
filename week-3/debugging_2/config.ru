@@ -1,2 +1,3 @@
-require_relative 'lib/app.rb'
+require_relative './lib/app.rb'
+
 run StruggleTableFlipperApp
