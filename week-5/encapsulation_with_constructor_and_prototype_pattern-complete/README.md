@@ -80,6 +80,8 @@ CountModel.prototype.set = function(count) {
 var countModel = new CountModel();
 countModel.set(5);
 console.log("count is", countModel.count());
+
+// Since renaming the CountModel to countModel doesn't affect the inital set up of the consturctor code, nothing changes initially, but when the variable countModel is assigned to a new instance of the countModel constructor, it overwrites the constructor function assigned to countModel removing its ability to create new instances as it is an instance itself.
 ```
 
 ### Question 2
@@ -96,13 +98,15 @@ CountModel.prototype.count = function() {
 // How does the printed output of the program change if you rename
 // `set` to `_set` (and change `countModel.set(5)` below to
 // `countModel._set(5)`)?
-CountModel.prototype.set = function(count) {
+CountModel.prototype._set = function(count) {
   this._count = count;
 };
 
 var countModel = new CountModel();
-countModel.set(5);
+countModel._set(5);
 console.log("count is", countModel.count());
+
+// Changing set to _set changes nothing in the functionaility of the function since the underscore is only a naming convention.
 ```
 
 ### Question 3
@@ -113,8 +117,9 @@ function CountModel() {
 
   // How does the printed output of the program change if you
   // uncomment the line below? Why does this happen?
-
+  
   // return {};
+  return this;
 };
 
 CountModel.prototype.count = function() {
@@ -128,6 +133,8 @@ CountModel.prototype.set = function(count) {
 var countModel = new CountModel();
 countModel.set(5);
 console.log("count is", countModel.count());
+
+// When the 'return {}' is placed at the end of the constructor function, it makes it construct simply a empty object instead of itself. For the functionailty to remain, it would have to return itself using the keyword 'this'
 ```
 
 ### Question 4
@@ -149,13 +156,16 @@ var countModel = new CountModel();
 
 // How does the printed output of the program change if you add this
 // code? Why?
-// countModel.set = function() {
-//   return "hello";
-// };
+
+countModel.set = function() {
+  return "hello";
+};
 
 countModel.set(5);
 
 console.log("count is", countModel.count());
+
+// Adding an assignment to the countModel.set method changes what function set performs, to simply return 'hello', since nothing is printed out to the console no result is seen when the set method is called, however the function does not change the count model _count property to the value passed in the set method.
 ```
 
 ### Question 5
@@ -180,6 +190,12 @@ console.log("count is", countModel.count());
 // Bonus research project. Can you find the property name below that
 // makes the statement print out `true`?
 // console.log(countModel["REPLACE_ME"] === CountModel.prototype);
+
+console.log(countModel.__proto__ === CountModel.prototype);
+// => true
+
+// the __proto__ property references the constructors prototype methods, similar to call passing in to super in ruby. Every object has a prototype method, however they start with only standard functions to begin. Modifiying a prototype for a constructor, will change the prototype method for all its instances.
+
 ```
 
 ## User Stories
