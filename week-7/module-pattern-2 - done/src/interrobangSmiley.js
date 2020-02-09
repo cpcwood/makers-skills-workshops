@@ -7,3 +7,5 @@
   }
   exports.interrobangSmiley = interrobangSmiley;
 })(this);
+
+// Creates module closure, where its local scope contains question mark count

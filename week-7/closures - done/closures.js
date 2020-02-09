@@ -69,3 +69,6 @@ var secretDiary = SecretDiary(); // add functions to secretDiary
 console.log(secretDiary.read()); // returns error code
 secretDiary.unlock();            // changes variable local to the .read functions scope  
 console.log(secretDiary.read()); // returns value of content
+
+
+// General
