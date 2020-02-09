@@ -39,11 +39,13 @@ console.log(4);
 
 2. Run the code to see if the numbers get printed in order (1, 2, 3 etc.).  If they do, your prediction is correct.
 
+// 1 4 (user clicks) 2 'click' 3
+
 3. If your prediction is incorrect, examine the code and experiment with it to try to figure out why.  Once you have more information, update your `console.log`s to reflect your prediction and return to step 2.
 
 #### Following the flow fast
 
-A developer constantly analyses the flow of control of their code.  Keep trying to improve this skill.  The more adept you are at reading the flow of control without running the code, the faster you'll be.  Build this intuition by making predictions and checking if your prediction is right.
+A developer constantly analyses the flow of control of their code.  Keep trying to improve this skill. The more adept you are at reading the flow of control without running the code, the faster you'll be.  Build this intuition by making predictions and checking if your prediction is right.
 
 ### Demo
 
@@ -108,6 +110,8 @@ $.get("https://async-workshops-api.herokuapp.com/people", function(peopleRespons
 1. `console.log` a number in each part of the code.  Run the code.  The numbers should be logged in order: 1, 2, 3, 4... If they aren't, follow the flow of control to figure out why.  Correct the `console.log`s.
 
 2. What value does `getReturnValue` have? What value does `peopleResponse` have? Why are they different?
+
+// jQuery ajax doesn't return the return value from the internal function, instead it returns request object, event listeners can be set up on that object
 
 ```js
 var getReturnValue = $.get("https://async-workshops-api.herokuapp.com/people", function(peopleResponse) {
